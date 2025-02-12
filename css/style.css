@@ -1,102 +1,113 @@
 /* Basic reset and background */
 html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    background: url('../img/plague_doctor_02.png') no-repeat center center fixed;
-    background-size: cover;
-    font-family: 'Orbitron', sans-serif;
-    color: #0f0;
-    position: relative;
-  }
-  
-  /* Matrix rain canvas */
-  #matrix {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-  
-  /* Plague doctor overlay for fading effect */
-  #plagueOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('../img/plague_doctor_02.png') no-repeat center center fixed;
-    background-size: cover;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-    z-index: 1;
-    pointer-events: none; /* Allow clicks to pass through */
-  }
-  
-  /* Centered welcome content with higher z-index */
-  .content {
-    position: absolute;
-    z-index: 3;  /* Ensures clickability above other elements */
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    transition: top 1s ease, transform 1s ease, opacity 1s ease;
-    white-space: nowrap;
-  }
-  
-  /* When clicked: animate upward and fade out */
-  .content.move-up {
-    top: 0;
-    transform: translate(-50%, 0);
-    opacity: 0;
-  }
-  
-  /* Style for the button inside .content */
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: url('../img/plague_doctor_02.png') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Orbitron', sans-serif;
+  color: #0f0;
+  position: relative;
+}
+
+/* Matrix rain canvas */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Plague doctor overlay for fading effect */
+#plagueOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../img/plague_doctor_02.png') no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  z-index: 1;
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* Centered welcome content with higher z-index */
+.content {
+  position: absolute;
+  z-index: 3;  /* Ensures the content appears above other elements */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  transition: top 1s ease, transform 1s ease, opacity 1s ease;
+  white-space: nowrap;
+}
+
+/* When clicked: animate upward and fade out */
+.content.move-up {
+  top: 0;
+  transform: translate(-50%, 0);
+  opacity: 0;
+}
+
+/* Style for the button inside .content */
+.content button {
+  background: none;
+  border: none;
+  color: gray;
+  font-size: 4em;
+  text-shadow: 0 0 20px gray;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Terminal box styling */
+.terminal {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  background: #000;
+  color: #0f0;
+  padding: 20px;
+  border: 2px solid #0f0;
+  font-family: 'Orbitron', monospace;
+  width: 80%;
+  max-width: 700px;
+  min-height: 400px;
+  opacity: 0;
+  transition: opacity 1s ease;
+  white-space: pre-wrap; /* Preserves formatting and newlines */
+}
+
+/* When activated: terminal fades in */
+.terminal.active {
+  opacity: 1;
+}
+
+/* Welcome text styling (if used in a header) */
+h1 {
+  color: gray;
+  font-size: 4em;
+  margin: 0;
+  text-shadow: 0 0 20px gray;
+  white-space: nowrap;
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
   .content button {
-    background: none;
-    border: none;
-    color: gray;
-    font-size: 4em;
-    text-shadow: 0 0 20px gray;
-    white-space: nowrap;
-    cursor: pointer;
+    font-size: 2.5em;  /* Smaller font size for mobile */
+    padding: 0.5em 1em;  /* Adjust button padding for mobile */
   }
   
-  /* Terminal box styling (using a <pre> for formatted text) */
-  .terminal {
-    position: absolute;
-    z-index: 2;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
-    background: #000;
-    color: #0f0;
-    padding: 20px;
-    border: 2px solid #0f0;
-    font-family: 'Orbitron', monospace;
-    width: 80%;
-    max-width: 700px;
-    min-height: 400px;
-    opacity: 0;
-    transition: opacity 1s ease;
-    white-space: pre-wrap; /* Preserves newline formatting */
+  .content {
+    padding: 10px;  /* Reduce container padding on smaller screens */
   }
-  
-  /* When activated: terminal fades in */
-  .terminal.active {
-    opacity: 1;
-  }
-  
-  /* Welcome text styling (if used inside a header) */
-  h1 {
-    color: gray;
-    font-size: 4em;
-    margin: 0;
-    text-shadow: 0 0 20px gray;
-    white-space: nowrap;
-  }
-  
+}
