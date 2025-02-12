@@ -36,37 +36,64 @@ html, body {
   pointer-events: none; /* Allow clicks to pass through */
 }
 
-/* Centered welcome content with higher z-index */
+/* Centered welcome content */
 .content {
   position: absolute;
-  z-index: 3;  /* Ensures the content appears above other elements */
+  z-index: 3;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  transition: top 1s ease, transform 1s ease, opacity 1s ease;
   white-space: nowrap;
 }
 
-/* When clicked: animate upward and fade out */
-.content.move-up {
-  top: 0;
-  transform: translate(-50%, 0);
-  opacity: 0;
-}
-
-/* Style for the button inside .content */
+/* Style for the button inside .content with neon glow */
 .content button {
   background: none;
   border: none;
-  color: gray;
+  color: rgb(255, 255, 255);
   font-size: 4em;
-  text-shadow: 0 0 20px gray;
-  white-space: nowrap;
+  text-transform: uppercase;
   cursor: pointer;
+  /* Neon glow animation */
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+  transition: transform 0.2s ease;
 }
 
-/* Terminal box styling */
+/* Neon glow keyframes */
+@keyframes neonGlow {
+  from {
+    text-shadow: 
+      0 0 5px #0f0,
+      0 0 10px #0f0,
+      0 0 20px #0f0;
+  }
+  to {
+    text-shadow: 
+      0 0 20px #0f0,
+      0 0 30px #0f0,
+      0 0 40px #0f0;
+  }
+}
+
+/* Click effect: shrink and fade out */
+.content.clicked {
+  animation: shrinkFade 0.5s forwards;
+}
+
+/* Shrink and fade keyframes */
+@keyframes shrinkFade {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Terminal box styling (using a <pre> for formatted text) */
 .terminal {
   position: absolute;
   z-index: 2;
@@ -74,7 +101,7 @@ html, body {
   top: 60%;
   transform: translate(-50%, -50%);
   background: #000;
-  color: #0f0;
+  color: #ccc;  /* Grayish white text color */
   padding: 20px;
   border: 2px solid #0f0;
   font-family: 'Orbitron', monospace;
@@ -91,23 +118,14 @@ html, body {
   opacity: 1;
 }
 
-/* Welcome text styling (if used in a header) */
-h1 {
-  color: gray;
-  font-size: 4em;
-  margin: 0;
-  text-shadow: 0 0 20px gray;
-  white-space: nowrap;
-}
-
 /* Responsive styles for mobile devices */
 @media (max-width: 768px) {
   .content button {
     font-size: 2.5em;  /* Smaller font size for mobile */
-    padding: 0.5em 1em;  /* Adjust button padding for mobile */
+    padding: 0.5em 1em;
   }
   
   .content {
-    padding: 10px;  /* Reduce container padding on smaller screens */
+    padding: 10px;  /* Reduced container padding on mobile */
   }
 }
