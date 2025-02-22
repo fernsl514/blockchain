@@ -50,18 +50,18 @@ html, body {
   position: fixed;
   top: 0;
   left: 0;
-  transform: translateX(-100%); /* Hidden off-screen to the left */
+  transform: translateX(-100%);
   width: 300px;
   height: 100%;
   background: #111;
   color: #fff;
-  z-index: 4; /* Above other content */
+  z-index: 4;
   transition: transform 0.3s ease;
   padding: 20px;
 }
 
 #sideMenu.active {
-  transform: translateX(0); /* Slide in when active */
+  transform: translateX(0);
 }
 
 #sideMenu nav ul {
@@ -102,7 +102,6 @@ html, body {
   justify-content: space-between;
   width: 30px;
   height: 25px;
-  /* Initially hidden; will be shown after clicking Enter */
 }
 #hamburgerButton.hidden {
   display: none;
@@ -191,7 +190,7 @@ html, body {
   border: var(--terminal-border);
   font-family: 'Orbitron', monospace;
   width: 80%;
-  max-width: 700px;
+  max-width: 800px;
   min-height: 400px;
   opacity: 0;
   transition: opacity 1s ease;
@@ -213,4 +212,26 @@ html, body {
   .content {
     padding: 10px;
   }
+}
+
+/* Captured Data Table Styling */
+.captured-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.captured-data-table th,
+.captured-data-table td {
+  border: 1px solid var(--neon-color);
+  padding: 5px 10px;
+  text-align: left;
+  word-break: break-word;
+}
+
+.captured-data-table th {
+  font-size: 12px;
+  background-color: #111;
+  color: var(--neon-color);
 }
