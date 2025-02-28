@@ -177,6 +177,9 @@ html, body {
   }
 }
 
+
+
+
 /* Terminal box styling */
 .terminal {
   position: absolute;
@@ -189,12 +192,15 @@ html, body {
   padding: 20px;
   border: var(--terminal-border);
   font-family: 'Orbitron', monospace;
-  width: 80%;
-  max-width: 800px;
+  width: 65%;
+  max-height: 60vh; /* Adjust the height as needed */
+  overflow-y: auto;
   min-height: 400px;
   opacity: 0;
   transition: opacity 1s ease;
   white-space: pre-wrap;
+  scrollbar-width: thin;
+  scrollbar-color: #0f0 #222;
 }
 
 /* Terminal active state: fades in */
